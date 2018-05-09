@@ -25,6 +25,9 @@ function weatherChatApp() {
             success: function (data) {
                 console.log("in fetch");
                 addCity(data);
+                var sortChoice =$('.dropdown-btn').text().slice(8);
+                console.log("choice = " + sortChoice);
+                sortEntries(sortChoice);
                 displayAllCities();
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -77,7 +80,7 @@ function weatherChatApp() {
 //add the city to the top of the array
     function addCity(city) {
         var date = new Date();
-        city.date = { hours: date.getHours(), minutes: date.getMinutes(), date: date.getDate(), month: date.getMonth(), fullYear: date.getFullYear() };
+        city.date = {dateString: date, hours: date.getHours(), minutes: date.getMinutes(), date: date.getDate(), month: date.getMonth(), fullYear: date.getFullYear() };
         city.objectID = cityObjectID++;
         var icon_class = _findIconClass(city.weather[0].id);
         city.weather_icon = icon_class;
@@ -163,6 +166,35 @@ function weatherChatApp() {
        
     }
 
+    var sortEntries = function(choice){
+        switch(choice){
+            case "Date": 
+            console.log("hello there");
+            cities.sort(function(a,b){
+                console.log(a.date.dateString);
+                var c = new Date(a.date.dateString);
+                var d = new Date(b.date.dateString);
+
+                return d-c;
+                });
+            break;
+            case "Temperature":
+            cities.sort(function(a,b){
+                return a.main.temp - b.main.temp;
+                });
+                break;
+            case "City":
+            cities.sort(function(a, b){
+                if(a.name < b.name) return -1;
+                if(a.name> b.name) return 1;
+                return 0;
+            })
+                break;
+        }
+
+        displayAllCities();
+    }
+
     return {
         fetchCity: fetchCity,
         removeCity: removeCity,
@@ -170,7 +202,8 @@ function weatherChatApp() {
         displayAllCities: displayAllCities,
         getFromLocalStorage: getFromLocalStorage,
         cities: cities, 
-        errorCity, errorCity
+        errorCity, errorCity,
+        sortEntries, sortEntries
 
     };
 }
@@ -222,6 +255,15 @@ $('.display-cities').on('click', '.add-comment-btn', function () {
     var $city = $(this).closest('.city-wrapper');
     var comment = $city.find('.comment-input').val();
     app.addComment(comment, $city);
+
+});
+
+
+$('.sort-by-dropdown').on('click', '.dropdown-item', function(){
+    var $current_item = $(this);
+    var choice = $current_item.text();
+    $current_item.closest('.dropdown').find('.dropdown-btn').html("Sort by "+  choice );
+    app.sortEntries(choice);
 
 });
 
