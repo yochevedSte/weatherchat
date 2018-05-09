@@ -1,0 +1,27 @@
+ <div class="row city-wrapper">
+                    <div class="col-xs-8  mx-auto city-container rounded">
+                        <button class="btn remove-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="weather-info">
+                            <h3 class="city-name">LONDON, GB</h3>
+                            <p class="date-time"><em>at 18:53 on 03/05/18</em></p>
+                            <h1 class="temperature">35 &#8451;</h1>
+                            <p class="description"><i class=" wi wi-day-snow-wind weather-icon"></i>Stormy and rainy</p>
+                        </div>
+                        <div class="comment-section  rounded">
+                            <h5>Comments:</h5>
+                            <div class="comments"></div>
+                            <form class="add-comment-form">
+                                <div class="input-group">
+                                    <textarea type="text" class="comment-input  form-control" placeholder="Comment about the weather..."></textarea>
+                                    <span>
+                                        <button type="submit" class=" form-control add-comment-btn">Comment</button>
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>

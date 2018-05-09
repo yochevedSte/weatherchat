@@ -1,0 +1,194 @@
+body{
+    background-image: url("background-weather2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0 auto;
+    min-height: 500px;
+    color: white;
+    padding-top: 70px; 
+
+}
+
+
+
+.navbar{
+    background-color: rgb(21, 58, 80);
+}
+.navbar a{
+    color:white;
+}
+
+.navbar i{
+    color:white;
+}
+
+.navbar .container{
+    margin-left: 0;
+}
+
+
+ /* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+   .loader {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba(255, 255, 255, 0.144) 
+                url('ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+   body.loading .loader {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .loader{
+    display: block;
+}
+
+
+.search-form{
+    width:60%;
+    text-align: center;
+  
+}
+
+
+
+
+
+
+
+.form-control{
+    border: 3px solid #ced4da !important;
+}
+
+.dropdown-btn{
+    color: #ced4da;
+    background-color:rgb(21, 58, 80) ;
+    border: 3px solid #ced4da !important;
+}
+.red-border{
+    border: 3px solid #dd3131 !important;
+    
+}
+
+.search-btn{
+    background-color:rgb(21, 58, 80) !important;
+}
+
+.search-btn:hover{
+    background-color: rgb(33, 92, 126) !important;
+}
+
+.error-text{
+    color: #dd3131;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.search-icon{
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+.city-container{
+    background-color: rgba(21, 58, 80,0.9);
+    min-height: 300px;
+    width:80%;
+    margin-top:40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding:15px;
+    color:white;
+    position: relative;
+  
+}
+
+.remove-btn{
+    position:absolute;
+   right:20px;
+   color: white;
+   background: none !important;
+   font-size: 20px !important;
+}
+
+.remove-btn:hover{
+    background-color:  rgb(33, 92, 126) !important;
+}
+
+.weather-info{
+    text-align: center;
+    height:230px;
+    padding-top:20px;
+}
+
+.weather-icon{
+    color:white;
+    margin-right:7px;
+}
+
+.temperature{
+    font-size: 60px;
+}
+
+.city-name{
+    margin-bottom: 3px;
+}
+.date-time{
+    margin-bottom:5px;
+}
+
+.description{
+    font-size:20px;
+}
+
+.comment-section{
+    background-color: rgba(16, 46, 63, 0.507); 
+   padding:20px;
+}
+.comment-input{
+    height:43px;
+}
+.add-comment-btn{
+    background-color: rgb(21, 58, 80) !important;
+    color:white !important;
+}
+
+.add-comment-btn:hover{
+    background-color: rgb(33, 92, 126) !important;
+}
+
+.comment{
+    background-color: rgba(38, 106, 145, 0.363) ;
+    padding: 10px;
+    margin-bottom:5px;
+}
+
+.add-comment-form{
+    margin-top:15px;
+}

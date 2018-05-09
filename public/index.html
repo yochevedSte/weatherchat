@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/font-awesome-5-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="/weather-icons/css/weather-icons.min.css">
+    
+    
+</head>
+
+<body>
+    <div class="background">
+        <nav class="navbar fixed-top">
+            <div class="container ">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <strong>Weather</strong>Chat
+                </a>
+            </div>
+        </nav>
+        <div class="container  mt-3 mb-3 ">
+            <form class="search-form mx-auto row">
+                <div class="input-group mb-3">
+
+                    <div class="dropdown">
+                        <button class="btn dropdown-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Sort by
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">City</a>
+                          <a class="dropdown-item" href="#">Temperature</a>
+                          <a class="dropdown-item" href="#">Date</a>
+                        </div>
+                      </div>
+                    <input type="text" class="search-input col-sm-11 form-control" placeholder="Search city...">
+                    <button type="submit" class="col-sm-1 form-control search-btn">
+                        <i class="fas fa-search search-icon"></i>
+                    </button>
+
+
+                </div>
+                <div class="error-text hidden">Please enter a valid city</div>
+
+            </form>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown link
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            <div class="container display-cities">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="loader"></div>
+    
+    </div>
+    
+    <script src="/jquery/dist/jquery.min.js"> </script>
+    <script src="/popper.js/dist/umd/popper.min.js"> </script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
