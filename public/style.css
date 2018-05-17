@@ -183,6 +183,14 @@ body.loading .loader{
     background-color: rgb(33, 92, 126) !important;
 }
 
+.comment-container{
+    position:relative;
+    background-color: rgba(38, 106, 145, 0.363) ;
+    padding: 10px;
+    margin-bottom:5px;
+    width: 100%;
+}
+
 .comment{
     background-color: rgba(38, 106, 145, 0.363) ;
     padding: 10px;

@@ -24,9 +24,8 @@ function weatherChatApp() {
             url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=metric" + "&APPID=" + API_KEY,
             success: function (data) {
                 console.log("in fetch");
-                addCity(data);
+                _addCity(data);
                 var sortChoice =$('.dropdown-btn').text().slice(8);
-                console.log("choice = " + sortChoice);
                 sortEntries(sortChoice);
                 displayAllCities();
             },
@@ -78,9 +77,8 @@ function weatherChatApp() {
 
 
 //add the city to the top of the array
-    function addCity(city) {
-        var date = new Date();
-        city.date = {dateString: date, hours: date.getHours(), minutes: date.getMinutes(), date: date.getDate(), month: date.getMonth(), fullYear: date.getFullYear() };
+    function _addCity(city) {
+      city.date = new Date();
         city.objectID = cityObjectID++;
         var icon_class = _findIconClass(city.weather[0].id);
         city.weather_icon = icon_class;
@@ -95,12 +93,12 @@ function weatherChatApp() {
         $display_cities = $('.display-cities');
         $display_cities.empty();
         for (var city of cities) {
-            console.log("this city = " + city);
+            console.log(city.date);
             $city = $("<div class=\"row city-wrapper\" data-id=" + city.objectID + "></div>");
             $cityContainer = $("<div class=\"col-xs-8  mx-auto city-container rounded\"><button class=\"btn remove-btn\"><i class=\"fas fa-times\"></i> </button></div>");
             $cityContainer.append("<div class=\"weather-info\">" +
                 "<h3 class=\"city-name\">" + city.name + ", " + city.sys.country + "</h3>" +
-                "<p class=\"date-time\"><em>at " + city.date.hours + ":" + city.date.minutes + " on " + city.date.date + "/" + city.date.month + "/" + city.date.fullYear + "</em></p>" +
+                "<p class=\"date-time\"><em>at " + city.date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) + " on " + city.date.toLocaleDateString() + "</em></p>" +
                 "<h1 class=\"temperature\">" + city.main.temp + "&#8451;</h1> " +
                 "<p class=\"description\"><i class=\"weather-icon " + city.weather_icon + "\"></i>" + city.weather[0].description + "</p> </div>" +
                 "<div class=\"comment-section  rounded\">" +
@@ -155,6 +153,10 @@ function weatherChatApp() {
 
     var getFromLocalStorage = function () {
         cities = JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+        for(city of cities){
+            city.date = new Date(city.date);
+        }
+    
     }
 
 
@@ -169,11 +171,10 @@ function weatherChatApp() {
     var sortEntries = function(choice){
         switch(choice){
             case "Date": 
-            console.log("hello there");
             cities.sort(function(a,b){
                 console.log(a.date.dateString);
-                var c = new Date(a.date.dateString);
-                var d = new Date(b.date.dateString);
+                var c = new Date(a.date);
+                var d = new Date(b.date);
 
                 return d-c;
                 });
@@ -201,7 +202,6 @@ function weatherChatApp() {
         addComment: addComment,
         displayAllCities: displayAllCities,
         getFromLocalStorage: getFromLocalStorage,
-        cities: cities, 
         errorCity, errorCity,
         sortEntries, sortEntries
 
